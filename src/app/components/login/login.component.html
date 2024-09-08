@@ -1,0 +1,48 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="heading text-center">
+      <h2 class="header">Image Hub</h2>
+    </div>
+    <p-toast></p-toast>
+    <form [formGroup]="form" (ngSubmit)="onLogIn()">
+      <div class="mb-3 mt-2">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          formControlName="username"
+          [ngClass]="{
+            'is-invalid':
+              form.get('username')?.invalid && form.get('username')?.touched
+          }"
+        />
+        <div class="invalid-feedback">Please enter a valid email address.</div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+          [ngClass]="{
+            'is-invalid':
+              form.get('password')?.invalid && form.get('password')?.touched
+          }"
+        />
+        <div class="invalid-feedback">Please enter a password.</div>
+      </div>
+      <div class="mb-3 form-check">
+        <input
+          type="checkbox"
+          (change)="rememberUser($event)"
+          class="form-check-input"
+          id="remember"
+        />
+        <label class="form-check-label" for="remember">Remember Me</label>
+      </div>
+      <button type="submit" class="btn">Log In</button>
+    </form>
+  </div>
+</div>

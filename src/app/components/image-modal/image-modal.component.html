@@ -1,0 +1,49 @@
+<div class="card flex justify-content-center my-2">
+  <p-dialog
+    [header]="imageData?.alt"
+    [modal]="true"
+    [style]="{ width: '1000px' }"
+    [(visible)]="visible"
+    [draggable]="false"
+    (onHide)="closePopup()"
+    appendTo="body"
+  >
+    <ng-template pTemplate="header">
+      <div class="header">
+        <div class="header-left-content">
+          <div class="photographer">
+            <i class="pi pi-camera"></i>
+          </div>
+          <a [href]="imageData?.photographer_url" target="_blank">
+            <span class="font-bold white-space-nowrap">
+              {{ imageData?.photographer }}
+            </span>
+          </a>
+        </div>
+        <div class="header-right-content">
+          <div class="dropdown">
+            <button
+              class="btn btn-success dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Free Download
+            </button>
+            <ul class="dropdown-menu">
+              <li
+                *ngFor="let item of downloadOptions"
+                (click)="selectDownloadOptions(item)"
+              >
+                <span class="dropdown-item">{{ item }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <figure>
+      <img [src]="imageData?.src?.large2x" [alt]="imageData?.alt" />
+    </figure>
+  </p-dialog>
+</div>

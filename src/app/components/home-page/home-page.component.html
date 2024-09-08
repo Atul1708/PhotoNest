@@ -1,0 +1,78 @@
+<div class="wrapper">
+  <nav>
+    <header>
+      <div class="logo gap-2">
+        <div class="logo-image">
+          <img height="40px" src="app.png" alt="" />
+        </div>
+        <h3>Image Hub</h3>
+      </div>
+      <div class="nav-search" #navSearchBar>
+        <input
+          type="text"
+          placeholder="Search for images, videos, or creators"
+          [(ngModel)]="searchQuery"
+          (keyup.enter)="onSearchingQuery()"
+        />
+        <button class="btn btn-primary" (click)="onSearchingQuery()">
+          <i class="pi pi-search"></i>
+        </button>
+      </div>
+      <button class="btn btn-primary" (click)="logout()">
+        <i class="pi pi-sign-out"></i> Logout
+      </button>
+    </header>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="home-content-wrapper">
+      <div class="image">
+        <img src="bg.jpg" alt="" />
+      </div>
+      <div class="home-content">
+        <h2>
+          The best free stock photos, royalty free images & videos shared by
+          creators.
+        </h2>
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Search for images, videos, or creators"
+            [(ngModel)]="searchQuery"
+            (keyup.enter)="onSearchingQuery()"
+          />
+          <button class="btn btn-primary" (click)="onSearchingQuery()">
+            <i class="pi pi-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="photos-card">
+    <app-photos-card [photosData]="photosData"></app-photos-card>
+  </div>
+
+  <div *ngIf="!photosData?.length && !isLoading" class="no-content">
+    <h3 class="text-center">
+      We couldn't find any matches for your search "{{ searchQuery }}""
+    </h3>
+    <div class="no-data-img">
+      <img src="no-data.gif" alt="" />
+    </div>
+  </div>
+  <!-- <div class="loadMore-btn d-flex align-items-center justify-content-center">
+    <button
+      *ngIf="photosData?.length"
+      class="btn btn-primary"
+      (click)="loadMoreImage()"
+    >
+      Load More
+    </button>
+  </div> -->
+
+  <div class="no-further" *ngIf="noFurtherContent">
+    <h2>No Further Content To Show</h2>
+  </div>
+</div>
+
+<app-loader *ngIf="isLoading"></app-loader>

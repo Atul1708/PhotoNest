@@ -1,0 +1,114 @@
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* margin: 1vh auto;
+  max-width: 90%;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: rep eat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 250px;
+  grid-auto-flow: dense; */
+}
+.card-container {
+  columns: 5 340px;
+  gap: 15px;
+  margin-top: 40px;
+  max-width: 95%;
+}
+
+.card {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 15px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+}
+
+.image-card {
+  position: relative;
+  display: flex;
+}
+
+.photographer {
+  width: 30px;
+  height: 30px;
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+a {
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.image-card:hover .lower-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lower-content {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s linear, visibility 0s;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+}
+
+.upper-content {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0%;
+  padding: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.card:hover .upper-content,
+.card:hover .lower-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.upper-content.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.photographer i {
+  color: #838383;
+}
+
+.upper-content .like button {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 0.2rem;
+  width: 35px;
+  height: 35px;
+  color: #838383;
+  display: grid;
+  place-items: center;
+  border: 0;
+  outline: 0;
+}
+
+.pi-heart-fill {
+  color: rgb(243, 92, 92);
+}

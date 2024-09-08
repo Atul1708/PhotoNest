@@ -1,0 +1,55 @@
+<div class="card-wrapper">
+  <div class="card-container">
+    <ng-container *ngFor="let item of photosData">
+      <div class="card">
+        <div class="image-card" (click)="openModal(item)">
+          <!-- <div
+            [ngClass]="{
+              'upper-content show': item?.liked,
+              'upper-content': !item?.liked
+            }"
+          >
+            <div class="like">
+              <button class="btn" (click)="onLikeClick(item)" #likeButton>
+                <i
+                  [ngClass]="item.liked ? 'pi pi-heart-fill' : 'pi pi-heart'"
+                ></i>
+              </button>
+            </div>
+          </div> -->
+          <img
+            [src]="item?.src?.large2x"
+            class="card-img-top"
+            [alt]="item?.alt"
+            loading="lazy"
+          />
+          <div class="lower-content">
+            <div class="lower-left-content d-flex align-items-center gap-2">
+              <div class="photographer">
+                <i class="pi pi-camera"></i>
+              </div>
+              <a [href]="item?.photographer_url" target="_blank">{{
+                item?.photographer
+              }}</a>
+            </div>
+            <div class="lower-right-content">
+              <button
+                class="btn btn-primary"
+                type="button"
+                (click)="onDownload(item?.id, $event)"
+              >
+                <i class="pi pi-download"></i> Download
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<p-messages />
+
+<!--  (onClick)="showDialog()" label="Show" -->
+
+<app-image-modal #ImagePopup [imageData]="modalImagesData"></app-image-modal>
